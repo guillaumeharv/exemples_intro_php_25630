@@ -17,17 +17,17 @@
 
         //premier lancer
         $lancer1 = rand(1,6);
-        if($lancer1 == 6)
+        if($lancer1 = 6)
             $nbFoisSix++;
         
         //deuxieme lancer
         $lancer2 = rand(1,6);
-        if($lancer2 == 6)
+        if($lancer2 = 6)
             $nbFoisSix++;
 
         //troisieme lancer
         $lancer3 = rand(1,6);
-        if($lancer3 == 6)
+        if($lancer3 = 6)
             $nbFoisSix++;
 
         echo "Voici les lancers : $lancer1, $lancer2, $lancer3<br>"
