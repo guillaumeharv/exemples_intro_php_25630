@@ -109,5 +109,45 @@
     echo "Il a fallu $nbLancers lancers pour obtenir trois fois pile de façon consécutive.";
 */
     ?>
+    <h1>Exercice 5 : les pyramides</h1>
+    <?php 
+/*
+Faire afficher ceci à l'aide de deux boucles imbriquées.  
+        * 
+        ** 
+        *** 
+        **** 
+        ***** 
+     
+ou encore ceci : 
+        ***** 
+        **** 
+        *** 
+        ** 
+        *
+
+*/
+    //pyramide
+    for($i = 1; $i <= 5; $i++)
+    {
+        for($j = 1; $j <= $i; $j++)
+        {
+            echo "*";
+        }
+        echo "<br>";
+    }
+
+    echo "<br><br>";
+
+    //pyramide inversée
+    for($i = 5; $i >= 1; $i--)
+    {
+        for($j = 1; $j <= $i; $j++)
+        {
+            echo "*";
+        }
+        echo "<br>";
+    }
+?>
 </body>
 </html>
