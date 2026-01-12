@@ -87,10 +87,10 @@
     //avec array_sum, c'est encore plus simple, pas besoin de boucle
     //$moyenne = array_sum($temperaturesSemaine) / count($temperaturesSemaine);
     ?>
-    <p>La moyenne des températures de la semaine est <?=  $moyenne ?></p>
+    <p>2.1 La moyenne des températures de la semaine est <?=  $moyenne ?></p>
     <!-- version avec arrondissement -->
     <p>La moyenne des températures de la semaine est <?=  number_format($moyenne, 2) ?></p>
-    <h2>2.1 Froid ou chaud (première version)</h2>
+    <h2>2.2 Froid ou chaud (première version)</h2>
     <table border="1">
         <tr><th>Jour</th><th>Température</th></tr>
         <?php
@@ -133,6 +133,55 @@
                 </tr>
                 <?php
             }
+        ?>
+    </table>
+    <h1>3. Le tableau des nombres aléatoires</h1>
+    <?php 
+        //déclaration (facultative) d'un tableau
+        $nombresAleatoires = [];
+
+        for($i = 1; $i <= 10; $i++)
+        {
+            //avec l'opérateur [] sans spécifier d'indice, on accède à la prochaine case vide du tableau
+            $nombresAleatoires[] = rand(1,20);
+        }
+
+        //déterminer le minimum et le maximum du tableau de nombres aléatoires
+        $min = $nombresAleatoires[0];
+        $max = $nombresAleatoires[0];
+
+        for($i = 1; $i < count($nombresAleatoires); $i++)
+        {
+            if($nombresAleatoires[$i] > $max)
+                $max = $nombresAleatoires[$i];
+            else if($nombresAleatoires[$i] < $min)
+                $min = $nombresAleatoires[$i];
+        }
+
+        //test
+        //echo "Le minimum est $min et le maximum est $max";
+    ?>
+    <pre>
+        <?php print_r($nombresAleatoires); ?>
+    </pre>
+    <table border="1">
+        <tr><th>Indice</th><th>Valeur</th></tr>
+        <?php 
+        for($i = 0; $i < count($nombresAleatoires); $i++)
+        {
+            if($nombresAleatoires[$i] == $max)
+                $classTemp = "rouge";
+            else if($nombresAleatoires[$i] == $min)
+                $classTemp = "bleu";
+            else 
+                $classTemp = "";
+?>
+            <tr class="<?= $classTemp ?>">
+                <td><?=  $i ?></td>
+                <td><?=  $nombresAleatoires[$i] ?></td>
+            </tr>
+        <?php
+        }
         ?>
     </table>
 </body>
