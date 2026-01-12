@@ -25,6 +25,7 @@
         print_r($individu1);
         ?>
     </pre>
+    <h1>Exemples de tableaux associatifs</h1>
     <?php 
     //version des individus en tableau associatif 
     $individu1 = array("prenom" => "Guillaume", "nom" => "Harvey", "ville" => "Montréal", "age" => 44);
@@ -89,5 +90,94 @@
     }
     echo "</ul>";
     ?>
+    <h1>Exemples de tableaux multidimensionnels</h1>
+    <?php 
+    //chaque individu est un tableau
+    $guillaume = array("prenom" => "Guillaume", "nom" => "Harvey", "ville" => "Montréal", "age" => 44);
+    $marc = array("prenom" => "Marc-André", "nom" => "Charpentier", "ville" => "Montréal", "age" => 42, "numTel" => "514-333-3333");
+    $valerie = array("prenom" => "Valérie", "nom" => "Tremblay", "ville" => "Montréal", "age" => 33);
+
+
+    //voici un tableau à index numérique qui contient, à chaque position, un individu différent (qui est lui-même un tableau à index associatif)
+    $individus = [$guillaume, $marc, $valerie];
+    //une version à index associatif
+    $individusAssoc = ["IndividuA" => $guillaume, "IndividuB" => $marc, "IndividuC" => $valerie];
+
+    //pas besoin nécessairement de déclarer les tableaux à l'avance, on peut tout déclarer en même temps
+    $individusToutEnMemeTemps = array(
+        "IndividuA" => array(
+            "prenom" => "Guillaume", 
+            "nom" => "Harvey", 
+            "ville" => "Montréal", 
+            "age" => 44),
+        "IndividuB" => array(
+            "prenom" => "Marc-André", 
+            "nom" => "Charpentier", 
+            "ville" => "Montréal", 
+            "age" => 42,
+            "numTel" => "514-333-3333"
+        ),
+        "IndividuC" => array(
+            "prenom" => "Valérie", 
+            "nom" => "Tremblay", 
+            "ville" => "Montréal", 
+            "age" => 33)
+    );
+    ?>
+    <pre>
+        <?php 
+        print_r($individus);
+        print_r($individusAssoc);
+        print_r($individusToutEnMemeTemps);
+        ?>
+    </pre>
+    <h1>Exemple d'affichage de tous les individus (pas de boucle imbriquée)</h1>
+    <table border="'1">
+    <tr><th>Prenom</th><th>Nom</th><th>Âge</th><th>Ville</th></tr>
+    <?php 
+    //comment faire afficher toutes les caractéristiques de tous les individus dans ma liste d'individus? 
+    //méthode lorsque je connais tous les attributs : pas besoin de boucle imbriquée
+    foreach($individus as $i)
+    {
+        echo "<tr><td>" . $i['prenom'] . "</td>";
+        echo "<td>" . $i['nom'] . "</td>";
+        echo "<td>" . $i['age'] . "</td>";
+        echo "<td>" . $i['ville'] . "</td>";
+        echo "</tr>";
+    }
+    ?>
+    </table>
+    <h1>Exemple d'affichage de tous les individus, et tous leurs attributs (avec boucle imbriquée)</h1>
+    <?php 
+    //comment faire afficher toutes les caractéristiques de tous les individus dans ma liste d'individus? 
+    //méthode lorsque je ne connais pas tous les attributs : besoin d'une boucle imbriquée pour boucler à travers les attributs
+    foreach($individus as $unIndividu)
+    {
+        echo "Nouvel individu : ";
+        echo "<ul>";
+        foreach($unIndividu as $attribut => $valeur)
+        {
+            echo "<li>$attribut : $valeur</li>";
+        }
+        echo "</ul>";
+    }
+    ?>
+    </table>
+    <h1>Version avec tableau associatif qui contient des tableaux associatifs</h1>
+    <?php 
+    //comment faire afficher toutes les caractéristiques de tous les individus dans ma liste d'individus? 
+    //méthode lorsque je ne connais pas tous les attributs : besoin d'une boucle imbriquée pour boucler à travers les attributs
+    foreach($individusAssoc as $identifiantIndividu => $unIndividu)
+    {
+        echo "Nouvel individu : $identifiantIndividu";
+        echo "<ul>";
+        foreach($unIndividu as $attribut => $valeur)
+        {
+            echo "<li>$attribut : $valeur</li>";
+        }
+        echo "</ul>";
+    }
+    ?>
+    </table>
 </body>
 </html>
