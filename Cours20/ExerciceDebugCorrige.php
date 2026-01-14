@@ -37,18 +37,18 @@
     foreach($lesEtudiants as $num => $etudiant)
     {
         //affichage du numéro d'étudiant
-        echo "Étudiant #" . $etudiant;
+        echo "Étudiant #" . $num;
 
         //on commence la liste des attributs de l'étudiant
         echo "<ul>";
         //affichage du nom complet
-        echo "<li>Nom complet : " . $etudiant[prenom]  . $etudiant[nom] . "</li>";
+        echo "<li>Nom complet : " . $etudiant["prenom"]  . " " . $etudiant["nom"] . "</li>";
 
         
         //on affiche les cours de l'étudiant et on compte le nombre de cours auxquels il est inscrit
         $nombreCours = 0;
         echo "<li>Cours inscrits : ";
-        foreach($etudiant["inscription"] as $cours)
+        foreach($etudiant["inscriptions"] as $cours)
         {
             echo $cours . " ";
             $nombreCours++;
@@ -57,7 +57,7 @@
  
 
         //si le nombre de cours est plus grand que 2
-        if($nombreCours >= 2)
+        if($nombreCours > 2)
         {
             $status = "Temps complet";
         }
@@ -67,6 +67,7 @@
         }
 
         echo "<li>Status : $status</li>";
+        echo "</ul>";
     }
     ?>
 </body>
