@@ -13,7 +13,7 @@
     //Pour traduire le SI, on utilise if 
 
     //si vous avez une seule instruction conditionnelle, pas besoin des accolades
-    if($x > 0) //attention : PAS de point-virgule à la fin du if
+    if($x > 0)    //attention : PAS de point-virgule à la fin du if
         echo "$x est plus grand que zéro.<br>";
      
     //si vous avez plusieurs instructions conditionnelles, on délimite le bloc avec des accolades

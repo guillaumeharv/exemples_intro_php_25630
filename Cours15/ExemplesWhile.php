@@ -22,8 +22,6 @@
     //$compteur = 1;
     //while($compteur <= 10) ; //pas de point-virgule ici, sinon boucle infinie!
     
-
-    
     ?>
     </ul>
 </body>
