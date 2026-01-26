@@ -63,6 +63,39 @@
     //Faites une fonction qui détermine si une phrase est un palindrome. Un palindrome est une phrase qui lorsque renversée, donne la même phrase.
     //ex : Esope reste ici et se repose, Laval
     //Documentez-là!
+
+    /*
+    *   Fonction estPalindrome
+    *       Description : Détermine si une chaine envoyée en paramètres est un palindrome ou non. Un palindrome est une phrase qui lorsque      renversée, donne la même phrase.
+            //ex : Esope reste ici et se repose, Laval
+
+            Paramètres :
+                $chaine, la chaine à tester
+            Valeur de retour : 
+               true si la chaine envoyée en paramètres est un palindrome, false sinon
+    */
+
+    function estPalindrome($chaineOriginale)
+    {
+        //première étape - on va tout mettre en minuscules
+        $chaine = strtolower($chaineOriginale);
+        //deuxième étape - on enlève les espaces
+        $chaine = str_replace(" ", "", $chaine);
+
+        //troisième étape, on renverse la chaine
+        $chaineRenverse = strrev($chaine);
+
+        //est-ce que la chaine sans espaces, sans majuscules, lorsque renversée, est identique
+        if($chaineRenverse == $chaine)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    } 
+    
      
     //Exercice 4
 
@@ -78,6 +111,30 @@
           Ex : SommeIntervalle(3, 6) retournera (3 + 4 + 5 + 6) = 18
     */
 
+    function sommeIntervalle($nombre1, $nombre2)
+    {
+        $somme = 0;
+
+        //renverser les deux nombres s'ils ne sont pas dans le bon ordre
+        if($nombre1 > $nombre2)
+        {
+            $tampon = $nombre1;
+            $nombre1 = $nombre2;
+            $nombre2 = $tampon;
+        }
+
+        //calcule la somme des nombres entre $nombre1 et $nombre2
+        for($i = $nombre1; $i <= $nombre2; $i++)
+        {
+            $somme += $i;
+        }
+
+        return $somme;
+    }
+
+
+
+
     //Exercice 5 : 
 
     /*
@@ -88,7 +145,24 @@
     *           $tabNombres : tableau d'entiers
             Valeur de retour :
                 float, la moyenne des entiers dans le tableau
+
+                NB. On prend pour acquis que le tableau contient seulement des nombres.
     */
+
+    function moyenneTableau($tab) 
+    {
+        if(count($tab) == 0)
+            return 0;
+
+        $somme = 0;
+        foreach($tab as $n)
+        {
+            $somme += $n;
+        }
+
+        //la moyenne est la somme divisée par le nombre d'éléments
+        return $somme / count($tab);
+    }            
 
     //Exercice 6 : Rédigez cette procédure et cette fonction.
 
@@ -103,12 +177,45 @@
     *
     */
 
+    function tableMultiplication($nb)
+    {
+        echo "<ul>";
+        for($i = 1; $i <= 12; $i++)
+        {
+            $resultat = $nb * $i;
+            echo "<li>$i x $nb = $resultat</li>";
+        }
+        echo "</ul>";
+    }
+
     //Faire une version fonction (et non procédure) 
     //qui construit et RETOURNE la chaine contenant la table
     //plutôt que de l'afficher. 
     //Documentez-là!
 
+    /*
+    *
+    *   Fonction construitTableMultiplication
+    *       Description : Construit la table de multiplication du nombre envoyé en paramètre et la retourne
+            Paramètres :
+                $nb : entier dont on veut afficher la table de multiplication.
+            Valeur de retour :
+                $chaine : une chaine de caractères contenant la liste ul et les li représentant une table de multiplication du nombre envoyé en paramètres
+    *
+    */
 
+    function construitTableMultiplication($nb)
+    {
+        $chaine = "<ul>";
+        for($i = 1; $i <= 12; $i++)
+        {
+            $resultat = $nb * $i;
+            $chaine .= "<li>$i x $nb = $resultat</li>";
+        }
+        $chaine .= "</ul>";
+
+        return $chaine;
+    }
     //Exercice 8
 
     /*
@@ -125,6 +232,18 @@
                 entier, prix total pour le nombre d'affiches envoyé en paramètres
     */
 
+    function prixAffiches($nbAffiches)
+    {
+        if($nbAffiches <= 5)
+            $prixTotal = $nbAffiches * 20;
+        else if($nbAffiches <= 25)
+            $prixTotal = 100 + ($nbAffiches - 5) * 10;
+        else 
+            $prixTotal = 300 + ($nbAffiches - 25) * 7;
+
+        return $prixTotal;
+    }
+
     //Exercice 9
 
      /*
@@ -140,4 +259,34 @@
         Documentez-là!
     
     */
+    function calculeBillets($montant)
+    {
+        //initialisation du nombre de billets à 0
+        $nbBillets10 = 0;
+        $nbBillets5 = 0;
+        $nbBillets2 = 0;
+        $nbBillets1 = 0;
+
+        //on prend la valeur entière de la division du montant par 10
+        $nbBillets10 = intval($montant / 10);
+        $reste = $montant % 10;
+
+        if($reste > 0)
+        {
+            //on prend la valeur entière de la division du montant par 5
+            $nbBillets5 = intval($reste / 5);
+            $reste = $reste % 5;
+
+            if($reste > 0)
+            {
+                //on prend la valeur entière de la division du montant par 2
+                $nbBillets2 = intval($reste / 2);
+                //s'il reste un dollar à distribuer, on donne un billet de 1
+                $nbBillets1 = $reste % 2;
+            }
+        }
+
+        return "$nbBillets10 billets de 10 dollars, $nbBillets5 billets de 5 dollars, $nbBillets2 billets de 2 dollars et $nbBillets1 billet de 1 dollar.";
+        
+    }
 ?>
