@@ -9,9 +9,13 @@
     <ul>
         <?php 
             //générer les liens vers ExempleFactorielleGet pour permettre de calculer les factorielles de 1 à 20
+            for($i = 1; $i <= 20; $i++)
+            {
+                ?>
+                <li><a href="ExempleFactorielleGet.php?fact=<?= $i ?>">Calculer la factorielle de <?= $i ?></a></li>
+                <?php
+            }
         ?>
-        <li><a href="ExempleFactorielleGet.php?factorielle=5">Calculer la factorielle de 5</a></li>
-        <li><a href="ExempleFactorielleGet.php?factorielle=6">Calculer la factorielle de 6</a></li>
     </ul>
 </body>
 </html>

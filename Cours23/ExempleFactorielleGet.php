@@ -10,15 +10,25 @@
     //faites l'inclusion du fichier de fonctions Fonctions.php
     require_once("Fonctions.php");
     //si le paramètre factorielle existe, calculez la factorielle de ce paramètre à l'aide de la fonction factorielle et affichez le résultat sur la page
-    if(isset($_GET["factorielle"]))
+    if(isset($_GET["fact"]))
     {
-        $resultat = factorielle($_GET["factorielle"]);
-        echo "La factorielle de " . $_GET["factorielle"] . " donne $resultat<bn>";
+        //valider le paramètre - est-il numérique? est-il positif?
+        if(is_numeric($_GET["fact"]) && $_GET["fact"] > 0)
+        {
+            $resultat = factorielle($_GET["fact"]);
+            echo "La factorielle de " . $_GET["fact"] . " donne $resultat<bn>";
+        }
+        else
+        {   
+            echo "Impossible de calculer la factorielle - entrez un nombre positif.";
+        }
     }
     else 
     {
         echo "Il faut envoyer le paramètre factorielle pour que la page effectue son calcul.<br>";
     }
     ?>
+    <br><a href="ListeLiensFactorielle.php">Retourner à la liste de liens</a>
+    <br><a href="FormulaireFactorielle.php">Retourner au formulaire de calcul</a>
 </body>
 </html>

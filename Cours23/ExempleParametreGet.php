@@ -19,5 +19,15 @@
         echo "Votre prénom est " . $_GET["prenom"] . " et votre nom est " . $_GET["nom"];
     }
     ?>
+    <h1>Liste de tous les paramètres reçus</h1>
+    <ul>
+    <?php
+        //$_GET est rempli automatiquement à partir de la query string et contient donc tous les paramètres
+        foreach($_GET as $nom => $valeur)
+        {
+            echo "<li>$nom : $valeur</li>";
+        }
+    ?>
+    </ul>
 </body>
 </html>
