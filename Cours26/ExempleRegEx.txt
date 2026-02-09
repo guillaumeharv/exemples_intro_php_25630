@@ -1,0 +1,45 @@
+Expression régulière pour...
+
+Un code postal : 
+
+^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z] ?\d[ABCEGHJ-NPRSTV-Z]\d$
+
+
+Un nombre entre 0 et 100 :
+(premierscenario|deuxiemeScenario|troisiemeScenario)
+
+^([1-9]?[0-9]|100)$
+^([1-9]?\d|100)$
+ou encore sans parenthèses, on répète les ancres (^ et $)
+^[1-9]?\d$|^100$
+
+Un numéro de téléphone avec ou sans indicatif régional en utilisant le tiret 
+Ex : 514-967-8946
+     967-8944 
+
+Solution : 
+^(\d{3}-)?\d{3}-\d{4}$ 
+
+Un numéro de téléphone avec ou sans parenthèses pour l'indicatif régional
+514-967-8946
+(514)967-8945
+
+Solution : 
+^(\(\d{3}\)|\d{3}-)\d{3}-\d{4}$
+
+
+Un courriel du format x@y.z 
+    Où x peut contenir un nombre infini caractère supérieur à 1 (a-zA-Z0-9_)   retrouvé dans \w
+    y peut contenir entre 10 et 15 caractères (les mêmes)
+    z peut contenir entre 1 et 3 caractères 
+
+guillaume_19@gmail.com
+
+^\w+@\w{10,15}\.\w{1,3}$
+
+
+
+
+
+
+
